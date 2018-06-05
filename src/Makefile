@@ -30,6 +30,7 @@ all	: mpi2norm_simple.exe mpi2norm_driver.exe mpi2norm_simple_all.exe
 
 # exe dependencies -- consequent is handled by generic rule
 mpi2norm_timer.exe	: Vector.o amath583.o
+ring.exe	: Vector.o amath583.o
 mpi2norm_driver.exe	: Vector.o amath583.o
 mpi2norm_simple.exe	: Vector.o amath583.o
 mpi2norm_simple_all.exe	: Vector.o amath583.o

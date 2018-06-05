@@ -53,10 +53,10 @@ int main(int argc, char* argv[]) {
 
     /* Time the seq norm */
     std::clock_t  start_time = std::clock();
-    for (int i=0; i < 100 ; i++){
+    for (int i=0; i < 100000 ; i++){
       seq = std::sqrt(dot(x, x));
     }
-    seq_time = (std::clock() - start_time) / 100;
+    seq_time = (std::clock() - start_time) / 100000;
 
     /* Scatter */
     MPI::COMM_WORLD.Scatter(&x(0), local_size, MPI::DOUBLE, &y(0), local_size, MPI::DOUBLE, 0);    
@@ -68,10 +68,10 @@ int main(int argc, char* argv[]) {
 
   /* Time the mpi norm */
   std::clock_t start_time = std::clock();
-  for (int i=0; i < 100 ; i++){
+  for (int i=0; i < 100000 ; i++){
     mpi = mpiTwoNorm(y);
   }
-  mpi_time = (std::clock() - start_time) / 100;
+  mpi_time = (std::clock() - start_time) / 100000;
   
   /* print results */
   if (0 == myrank) {
