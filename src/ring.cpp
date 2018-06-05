@@ -23,7 +23,28 @@ int main(int argc, char* argv[]) {
   int myrank = MPI::COMM_WORLD.Get_rank();
   int mysize = MPI::COMM_WORLD.Get_size();
 
-  /* write me */
+  while(rounds--){
+  if (0 == myrank) {
+    std::cout << myrank << ": sending " << token << std::endl;
+    MPI::COMM_WORLD.Send(&token, 1, MPI::INT, 1, 321);
+    MPI::COMM_WORLD.Recv(&token, 1, MPI::INT, mysize-1, 321);
+    std::cout << myrank << ": received " << token << std::endl;
+    ++token;
+  } else if(myrank == mysize-1){
+    MPI::COMM_WORLD.Recv(&token, 1, MPI::INT, myrank-1, 321);
+    std::cout << myrank << ": received " << token << std::endl;
+    ++token;
+    std::cout << myrank << ": sending  " << token << std::endl;
+    MPI::COMM_WORLD.Send(&token, 1, MPI::INT, 0, 321);
+
+  } else{
+    MPI::COMM_WORLD.Recv(&token, 1, MPI::INT, myrank-1, 321);
+    std::cout << myrank << ": received " << token << std::endl;
+    ++token;
+    std::cout << myrank << ": sending  " << token << std::endl;
+    MPI::COMM_WORLD.Send(&token, 1, MPI::INT, myrank+1, 321);
+  }
+  }
 
   MPI::Finalize();
 

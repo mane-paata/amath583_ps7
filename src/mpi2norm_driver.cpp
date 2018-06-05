@@ -24,12 +24,24 @@ double mpiTwoNorm(const Vector& local_x) {
 
 
 int main(int argc, char* argv[]) {
+  if(argc != 2){
+    std::cout << "Usage : " << argv[0] << " [dimension] " << std::endl;
+  }
   MPI::Init();
 
   size_t myrank = MPI::COMM_WORLD.Get_rank();
   size_t mysize = MPI::COMM_WORLD.Get_size();
 
-  /* write me */
+  unsigned long local_size = stol[argv[1]];
+  Vector y(local_size);
+
+  if (myrank == 0){
+    Vector x(local_size*mysize);
+    randomize(x);
+
+    MPI_Scatter(x, local_size, MPI::DOUBLE, &y, local_size, MPI::DOUBLE, 0, MPI::COMM_WORLD);
+
+  }
 
   MPI::Finalize();
 
