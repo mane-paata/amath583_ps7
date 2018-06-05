@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
     X1(0, i) = X0(0, i) = 1.0;
   }
 
-  Stencil<9> A;
+  Stencil<5> A;
   ir(A, X1, X0, max_iters, 1.e-6);
 
   return 0;

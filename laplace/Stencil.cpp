@@ -31,7 +31,7 @@ Grid operator*(const Stencil<9>& A, const Grid& x) {
   
   for (size_t i = 1; i < x.numX() - 1; ++i) {
     for (size_t j = 1; j < x.numY() - 1; ++j) {
-      y(i, j) = x(i, j) -(4* (x(i - 1, j) + x(i + 1, j) + x(i, j - 1) + x(i, j + 1)) +(x(i-1, j-1) + x(i+1, j-1) + x(i-1, j+1) + x(i+1, j+1))) / 20.0;
+      y(i, j) =  x(i, j) - (4* (x(i-1, j) + x(i+1, j) + x(i, j-1) + x(i, j+1)) +(x(i-1, j-1) + x(i+1, j-1) + x(i-1, j+1) + x(i+1, j+1))) / 20.0;
     }
   }
   return y;
