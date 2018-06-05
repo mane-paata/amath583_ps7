@@ -39,7 +39,8 @@ int main(int argc, char* argv[]) {
 
   double sigma = mpiTwoNorm(x);
 
-  if (0 == myrank) {
+  if (0 == myrank) 
+  {
     double seq  = twoNorm(x);                    // two norm of the local vector
     double Pseq = sqrt(mysize * (seq * seq));    // two norm of the global vector
     std::cout << "#\tseq\tPseq\tmpi\tdiff" << std::endl;

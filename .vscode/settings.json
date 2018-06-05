@@ -1,0 +1,35 @@
+{
+  "terminal.integrated.shell.osx": "/usr/local/bin/docker",
+  "terminal.integrated.shellArgs.osx": [
+    "run", "-it", "--rm",
+    "-v", "/Users/ajagannath/Workspace/test_projects/amath583_ps7:/home/amath583/ps7",
+    "amath583/openmpi"
+  ],
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "files.associations": {
+    "__hash_table": "cpp",
+    "__split_buffer": "cpp",
+    "bitset": "cpp",
+    "hash_map": "cpp",
+    "initializer_list": "cpp",
+    "iterator": "cpp",
+    "list": "cpp",
+    "random": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "unordered_map": "cpp",
+    "utility": "cpp",
+    "vector": "cpp",
+    "hashtable": "cpp",
+    "__config": "cpp",
+    "__nullptr": "cpp",
+    "cstddef": "cpp",
+    "exception": "cpp",
+    "stdexcept": "cpp",
+    "type_traits": "cpp",
+    "typeinfo": "cpp",
+    "algorithm": "cpp"
+  }
+}
